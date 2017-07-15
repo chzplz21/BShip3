@@ -1,0 +1,281 @@
+td, th {
+    border: 1px solid red;
+	font-size: 20px;
+	text-align: center;
+	font-family: 'Montserrat', sans-serif;
+}
+
+
+
+#top-heading {
+	
+	float: left;
+	font-size: 30px;
+	font-family: 'Montserrat', sans-serif;
+	
+}
+
+
+
+#battle {
+	margin: 0;
+	color: red;
+}
+
+
+#ship {
+	margin: 0;
+	color: blue;
+}
+
+/*rules button */
+.rules {
+	font-size: 20px;
+	padding-top: 20px;
+	text-decoration: none;
+}
+
+a:hover {
+	color: red;
+}
+
+
+
+#holder {
+	background-image: url("http://voices.nationalgeographic.com/files/2017/03/DJI_0276.jpg");
+	width: 900px;
+	
+	height: 100%;
+
+	position: absolute;
+	right: 0;
+
+}
+
+
+table {
+	
+	width: 80%;
+	margin: 0 auto;
+	height: 500px;
+	padding-top: 50px;
+	padding-bottom: 50px;
+	overflow: hidden;
+	table-layout: fixed2;
+}
+
+
+td {
+	
+	width: 20px;
+	height: 20px;
+}
+
+
+.side {
+	text-align: center;
+	border: none;
+}
+
+
+
+form {
+    
+	font-size: 20px;
+	clear: both;
+	position: absolute;
+	margin-top: 250px;
+}
+
+
+
+/*message below form input box */
+#words{
+	width: 250px;
+	height: 300px;
+	font-size: 15px;
+	font-family: 'Montserrat', sans-serif;
+	clear: both;
+	position: absolute;
+	margin-top: 250px;
+}
+
+
+#battleship {
+	display: block;
+	width: 100%;
+	height: auto;
+	font-family: 'Montserrat', sans-serif;
+}
+
+#won {
+	visibility: hidden;
+	color: #064896;
+}
+
+#wonbutton{
+	visibility: hidden;
+	background-color: #064896;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+
+/*styles for rules page */
+
+/*rules of game heading */
+#rulesofgame {
+	font-size: 30px;
+	font-family: 'Montserrat', sans-serif;
+	color: blue;
+	
+}
+
+/*paragraph about rules on rules page */
+#rulesparagraph {
+	font-size: 20px;
+	font-family: 'Montserrat', sans-serif;
+	
+}
+
+/*container for rules page */
+#container {
+	width: 80%;
+	margin: 0 auto;
+	
+	
+	
+}
+@media only screen and (max-width: 1200px) {
+
+
+#holder {
+	width: 650px;
+}
+	
+
+	
+	
+}
+
+
+@media only screen and (max-width: 900px) {
+
+
+#holder {
+	width: 500px;
+}
+	
+
+	
+	
+}
+
+
+
+@media only screen and (max-width: 750px) {
+
+
+#holder {
+	
+  margin-top: 20%;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+
+}
+	
+#words {   
+	left: 50%;
+	margin: 0 auto;
+	font-size: 10px;
+}
+
+
+#battle {
+	margin: 0;
+	color: red;
+	font-size: 40px;
+}
+
+
+#ship {
+	margin: 0;
+	color: blue;
+	font-size: 40px;
+}
+	
+	
+}
+
+
+
+@media only screen and (max-width: 450px) {
+
+
+#holder {
+	
+  margin-top: 50%;
+  width: 100%;
+  
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+
+}
+
+table {
+	
+	width: 90%;
+	margin: 0 auto;
+	height: 500px;
+	padding-top: 50px;
+	padding-bottom: 50px;
+	overflow: hidden;
+	table-layout: fixed2;
+}
+
+#battle {
+	margin: 0;
+	color: red;
+	font-size: 30px;
+}
+
+
+#ship {
+	margin: 0;
+	color: blue;
+	font-size: 30px;
+}
+
+#xguess{
+    
+	width: 40;
+}
+
+#yguess{
+    
+	width: 40;
+}
+
+#words {
+	font-size: 7px;
+	width: 120px;
+}
+
+td, th {
+	font-size: 15px;
+}
+
+
+
+
+	
+}

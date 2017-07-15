@@ -1,0 +1,751 @@
+<html>
+<head>
+
+<link rel="stylesheet" type="text/css" href="battleship.css">
+<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+</head>
+
+<body>
+
+<div id = "top-heading">
+	<h1 id = "battle">Battle</h1>
+	<h1 id = "ship">Ship</h1>
+	<a class = "rules" href = "rules.html">Rules</a>
+</div>
+
+
+<div id = "holder">
+
+<table>
+
+
+
+  <tr>
+    <td  class = "side"></td>
+	<td onclick = "guessFunction3" class = "side">0</td>
+    <td onclick = "guessFunction3" class = "side">1</td>
+    <td onclick = "guessFunction3" class = "side">2</td>
+    <td onclick = "guessFunction3" class = "side">3</td>
+    <td onclick = "guessFunction3" class = "side">4</td>
+    <td onclick = "guessFunction3" class = "side">5</td>
+	<td onclick = "guessFunction3" class = "side">6</td>
+  
+  </tr>
+  
+  <tr>
+    <td  class = "side">0</td>
+	<td onclick = "guessFunction3(this)" id  = "00" ></td>
+	<td onclick = "guessFunction3(this)" id  = "01"></td>
+	<td onclick = "guessFunction3(this)"  id  = "02"></td>
+	<td onclick = "guessFunction3(this)"  id  = "03"></td>
+	<td onclick = "guessFunction3(this)" id  = "04"></td>
+	<td onclick = "guessFunction3(this)" id  = "05"></td>
+	<td onclick = "guessFunction3(this)" id  = "06"></td>
+    
+  </tr>
+  
+  
+  <tr>
+     <td class = "side">1</td>
+    <td onclick = "guessFunction3(this)" id  = "10"></td>
+	<td onclick = "guessFunction3(this)" id  = "11"></td>
+	<td onclick = "guessFunction3(this)" id  = "12"></td>
+	<td onclick = "guessFunction3(this)" id  = "13"></td>
+	<td onclick = "guessFunction3(this)" id  = "14"></td>
+	<td onclick = "guessFunction3(this)" id  = "15"></td>
+	<td onclick = "guessFunction3(this)" id  = "16"></td>
+  </tr>
+  
+    <tr>
+	 <td class = "side">2</td>
+    <td onclick = "guessFunction3(this)" id  = "20"></td>
+	<td onclick = "guessFunction3(this)" id  = "21"></td>
+	<td onclick = "guessFunction3(this)" id  = "22"></td>
+	<td onclick = "guessFunction3(this)" id  = "23"></td>
+	<td onclick = "guessFunction3(this)" id  = "24"></td>
+	<td onclick = "guessFunction3(this)" id  = "25"></td>
+	<td onclick = "guessFunction3(this)" id  = "26"></td>
+  </tr>
+  
+  
+    <tr>
+	 <td class = "side">3</td>
+     <td onclick = "guessFunction3(this)" id  = "30"></td>
+	<td onclick = "guessFunction3(this)" id  = "31"></td>
+	<td onclick = "guessFunction3(this)" id  = "32"></td>
+	<td onclick = "guessFunction3(this)" id  = "33"></td>
+	<td onclick = "guessFunction3(this)" id  = "34"></td>
+	<td onclick = "guessFunction3(this)" id  = "35"></td>
+	<td onclick = "guessFunction3(this)" id  = "36"></td>
+  </tr>
+  
+     <tr>
+	<td class = "side">4</td>
+    <td onclick = "guessFunction3(this)" id  = "40"></td>
+	<td onclick = "guessFunction3(this)" id  = "41"></td>
+	<td onclick = "guessFunction3(this)" id  = "42"></td>
+	<td onclick = "guessFunction3(this)" id  = "43"></td>
+	<td onclick = "guessFunction3(this)" id  = "44"></td>
+	<td onclick = "guessFunction3(this)" id  = "45"></td>
+	<td onclick = "guessFunction3(this)" id  = "46"></td>
+  </tr>
+  
+   <tr>
+	<td class = "side">5</td>
+    <td onclick = "guessFunction3(this)" id  = "50"></td>
+	<td onclick = "guessFunction3(this)" id  = "51"></td>
+	<td onclick = "guessFunction3(this)" id  = "52"></td>
+	<td onclick = "guessFunction3(this)" id  = "53"></td>
+	<td onclick = "guessFunction3(this)" id  = "54"></td>
+	<td onclick = "guessFunction3(this)" id  = "55"></td>
+	<td onclick = "guessFunction3(this)" id  = "56"></td>
+  </tr>
+  
+   <tr>
+	 <td class = "side">6</td>
+    <td onclick = "guessFunction3(this)" id  = "60"></td>
+	<td onclick = "guessFunction3(this)" id  = "61"></td>
+	<td onclick = "guessFunction3(this)" id  = "62"></td>
+	<td onclick = "guessFunction3(this)" id  = "63"></td>
+	<td onclick = "guessFunction3(this)" id  = "64"></td>
+	<td onclick = "guessFunction3(this)" id  = "65"></td>
+	<td onclick = "guessFunction3(this)" id  = "66"></td>
+  </tr>
+  
+  
+</table>
+</div>
+
+
+<!--Left side words -->
+<div id = "words">
+	<h1 id = "message">Take a guess! Just click on any table box. What do you have to lose except your time and money?</h1>
+	<h1 id = "won">You Won! Hit the button below to play again.</h1>
+	<button id = "wonbutton" onclick = "reloadFunk()">Play Again!</button>
+</div>
+
+
+<!--
+<form>
+
+Guess x: 
+<input id = "xguess" type="text" size = "5"><br>
+Guess y:
+<input id = "yguess" type="text" size = "5"><br>
+<input type="button" onclick="guessFunction()" value="Submit">
+<h1 id = "message">Take a guess! What do you have to lose except your time and money?</h1>
+</form>
+-->
+
+
+<script>
+
+
+//Check for coordinates to make sure they don't intersect
+var check2;
+
+//p is the index variable for the y coordinate in the "coordinates" array
+	  var p;
+
+var sunkcount = 0;
+
+
+//Creates 2d array //
+var gameBoard = new Array(7);
+
+for (var i = 0; i < 7; i++) {
+  gameBoard[i] = new Array(7);
+}
+
+
+//makes every index "0" //
+	for (var uy=0; uy<7; uy++) {
+	  for (var ux=0; ux<7; ux++) {
+	   
+		gameBoard[ux][uy] = "0";
+	  
+	  }
+	 }
+	 
+//This is an array to hold the coordinates. Will be used for checking
+//to make sure that one ship doesn't intersect with another 
+var coordinates= new Array(3);
+	for (var vy = 0; vy<3; vy++) {
+	     coordinates[vy] = new Array(3);
+	  }
+	  
+	  
+
+//Runs three times to make three ships //
+	for (var m = 0; m<3; m++) {
+	   
+	  if (m==0) {
+	  
+	     Machine(m, coordinates);
+	  }
+	  else {
+	  
+	 check2 = false;
+
+	 
+	while (check2 == false) {
+	    		
+	  Machine(m, coordinates);
+	  check2 = coordinateCheck(coordinates, m);
+		  
+		  }
+		  
+		  
+		
+		}
+	
+	  }
+	  
+	// document.write(count); 
+   
+
+function Machine(m, coordinates) {
+    p = 0;
+	var randAx = Math.floor(Math.random() * (7) + 0);
+	var randAy = Math.floor(Math.random() * (7) + 0); 	
+//makes one index "a" //
+
+	//gameBoard[randAx][randAy] = "a";
+	//sets coordinates index to create an object holding the x and y values 
+	coordinates[m][p] =  new object(randAx, randAy);	
+	p++;	 
+
+	
+	
+//Finds random adjacent index on x axis which will be 'b' //
+	var addAx = randAx + 1;
+	var subAx = randAx - 1;
+	
+	var xhold = [randAx, addAx, subAx];
+	
+	var check = false;
+		
+			
+	
+	while (check == false) {
+			
+		    var rand = Math.floor(Math.random() * (3) + 0);
+			//function which checks to see if it's off the gameboard
+			 check = randCheck(rand, xhold);
+		
+			}
+			
+		
+	        var randBx = xhold[rand];
+		
+//Sets numY to current y index //
+	var randBy = randAy;
+
+//if it randomly picked the first index,(if rand == 0), then adjust y index,//
+// otherwise keep y the same //
+		if (rand == 0) {
+			/*Finds random adjacent y index */
+			var addAy = randBy + 1;
+			var subAy = randBy - 1;
+			var yhold = [addAy, subAy];
+			
+			
+		
+		//checks to see if number is off the gameboard //
+		check = false;
+		while (check == false ) {
+		     rand = Math.floor(Math.random() * (2) + 0);
+			 check = randCheck(rand, yhold);
+			
+			}
+			
+			var randBy = yhold[rand];
+			/*Enough info to set B */
+			//gameBoard[randBx][randBy] = "b";
+			coordinates[m][p] =  new object(randBx, randBy);
+			p++;
+			
+	}
+
+		//if there is no change in y, in other words, previous if statement did not trigger //
+			else {
+				//Since there was no change in the y axis, just set b//
+				//gameBoard[randBx][randAy] = "b";
+				coordinates[m][p] =  new object(randBx, randAy);
+				p++;
+			}	
+			
+			
+			var add;
+			var sub;
+				
+	//if "b" is to the right of "A"	//	
+			
+			
+				if (randBx > randAx) {
+					add = randBx + 1;
+					sub = randAx - 1;
+					var cSpot = getRandom(add, sub);
+					//gameBoard[cSpot][randAy] = "c";
+					coordinates[m][p] =  new object(cSpot, randAy);
+					p++;
+					
+				}
+	//if "b" is to the left of A//		
+				else if (randBx < randAx) {
+				  add = randAx + 1;
+				  sub = randBx - 1;
+				  var cSpot = getRandom(add, sub);
+				  //gameBoard[cSpot][randAy] = "c";
+				  coordinates[m][p] =  new object(cSpot, randAy);
+				  p++;
+					
+				}
+				
+				
+	
+		
+	//if x axis was unchanged //
+	
+				else {
+				
+					if (randBy > randAy) {
+					
+						add = randBy + 1;
+						sub = randAy - 1;
+						var cSpot = getRandom(add, sub);
+						//gameBoard[randAx][cSpot] = "c";
+						coordinates[m][p] =  new object(randAx, cSpot);
+					    p++;
+					}
+					
+					else {
+						
+						 add= randAy + 1;
+						 sub = randBy - 1;
+						 var cSpot = getRandom(add, sub);
+						 //gameBoard[randAx][cSpot] = "c";
+					     coordinates[m][p] =  new object(randAx, cSpot);
+					     p++;
+					}
+					
+					
+					
+					
+		         }
+				 
+				 
+				
+	}			
+		
+
+
+		
+	
+	//puts those two random indexes together and inserts //
+	//the letter 'c' at that spot //
+	
+		
+	var holder;
+	
+	for (var w=0; w<3; w++) {
+	  for (var z=0; z<3; z++) {
+	  
+	     var xMark = coordinates[w][z].xValue;
+	     var yMark = coordinates[w][z].yValue;
+		
+		if (w==0) {
+		 if (z==0) {
+		 
+		    gameBoard[xMark][yMark] = "a";
+			//hitFunction(gameBoard, xMark, yMark);
+		
+		 }
+		 
+		 else if (z==1) {
+		     gameBoard[xMark][yMark] = "b";
+			 //hitFunction(gameBoard, xMark, yMark);
+			 
+		 
+		 }
+		 
+		 
+		 else {
+		 
+		     gameBoard[xMark][yMark] = "c";
+			 //hitFunction(gameBoard, xMark, yMark);
+		 
+		 }
+	  
+	  }
+	  
+	  
+	  
+	  
+		if (w==1) {
+		 if (z==0) {
+		 
+		    gameBoard[xMark][yMark] = "d";
+			//hitFunction(gameBoard, xMark, yMark);
+		 
+		 }
+		 
+		 else if (z==1) {
+		     gameBoard[xMark][yMark] = "e";
+			 //hitFunction(gameBoard, xMark, yMark);
+		 
+		 }
+		 
+		 
+		 else {
+		 
+		     gameBoard[xMark][yMark] = "f";
+			 //hitFunction(gameBoard, xMark, yMark);
+		 
+		 }
+	  
+	  }
+	  
+	  
+	  if (w==2) {
+		 if (z==0) {
+		 
+		    gameBoard[xMark][yMark] = "g";
+			//hitFunction(gameBoard, xMark, yMark);
+		 
+		 }
+		 
+		 else if (z==1) {
+		     gameBoard[xMark][yMark] = "h";
+			 //hitFunction(gameBoard, xMark, yMark);
+			
+		 
+		 }
+		 
+		 
+		 else {
+		 
+		     gameBoard[xMark][yMark] = "i";
+			 //hitFunction(gameBoard, xMark, yMark);
+		 
+		 }
+	  
+	  }
+	  
+	  
+	  
+	  
+	  
+	
+	}
+	}
+	
+	document.write("<br>");
+	
+	/*
+	for (var y=0; y<7; y++) {
+	  for (var x=0; x<7; x++) {
+		document.write(gameBoard[x][y]);
+		document.write(" ");
+	
+	}
+		document.write("<br>");
+}
+*/
+
+	
+function getRandom(add, sub) {
+	
+		var chold = [add, sub];
+		var check = false;
+		
+		while (check==false) {
+			rand = Math.floor(Math.random() * (2) + 0);
+			check = randCheck(rand, chold);
+			
+		}
+		
+		var randCx  = chold[rand];
+		return randCx;
+}
+
+
+//function which checks to see if randomly picked number is off the gameboard //
+function randCheck(rand, array) {
+
+	if (array[rand]<0) {
+		
+	    return false;
+		
+	
+	}
+	
+	else if (array[rand]>6) {
+	
+	   return false;
+	
+	}
+	
+	else {
+	
+	  return true;
+	  
+	}
+	
+}
+	
+	
+	
+function object(x,y) {
+ 
+ 
+   this.xValue = x;
+   this.yValue = y;
+   this.gotIt = false;
+   /*
+    document.write(this.xValue);
+	 document.write(this.yValue); 
+	 document.write("<br>");
+	 */
+}
+
+
+
+function coordinateCheck(coordinates, m) {
+   
+
+    for (var v = 0; v<3; v++) {
+		for (var s =0; s<3; s++) {
+   
+   if (coordinates[m][v].xValue == coordinates[m-1][s].xValue && coordinates[m][v].yValue == coordinates[m-1][s].yValue) {
+    //document.write(m); 
+    
+	  return false;
+	    
+   }
+   
+   
+   if (m==2) {
+   
+     if (coordinates[m][v].xValue == coordinates[m-2][s].xValue && coordinates[m][v].yValue == coordinates[m-2][s].yValue) {
+		
+		
+		
+		 return false;
+		 
+		 }
+   }
+   
+   }
+ 
+   }
+   
+  
+	  
+    return true;
+
+}
+
+
+
+function hitFunction(gameBoard, xMark, yMark) {
+	
+	var holder = ("" + xMark + yMark);
+	var holder2 = holder.toString();	
+	
+	document.getElementById(holder2).innerHTML = "hit!";
+		
+}
+
+/*
+
+function guessFunction() {
+
+   guessFunction2(coordinates);
+}
+
+
+function guessFunction2(coordinates) {
+
+  var x = document.getElementById("xguess").value;
+  var y = document.getElementById("yguess").value; 
+  var z = x + y;
+  
+
+ 
+  for (var i = 0; i<3; i++) {
+    for (var b = 0; b < 3; b++)  { 
+       if (coordinates[i][b].xValue==x && coordinates[i][b].yValue == y) {
+	      document.getElementById(z).innerHTML = "gotit";
+		  coordinates[i][b].gotIt = true;
+		  gotitFunk();
+		  sunkFunk(coordinates);
+		
+		  return;
+	   
+	   }   
+  } 
+}
+
+/*miss message goes inside table cell */
+/*
+	document.getElementById(z).innerHTML = "Miss";
+/*message function if miss */
+//	message();
+	
+		
+
+function guessFunction3(td) {
+	var z = td.id;
+	var chars = z.split('');
+	var x = chars[0];
+	var y = chars[1];
+	
+	 // document.write(coordinates[0][0].xValue);
+  for (var i = 0; i<3; i++) {
+    for (var b = 0; b < 3; b++)  { 
+       if (coordinates[i][b].xValue==x && coordinates[i][b].yValue == y) {
+	      document.getElementById(z).innerHTML = "gotit";
+		  document.getElementById(z).style.color = "red";
+		  coordinates[i][b].gotIt = true;
+		  gotItFunk();
+		  /*counts how many ships have sunk */
+		  var ok = sunkFunk(coordinates, i, sunkcount);
+		  if (ok==true) {
+				sunkcount++;
+		  }
+		  return;
+	   
+	   }   
+  } 
+}
+
+/*miss message goes inside table cell */
+	document.getElementById(z).innerHTML = "Miss";
+	
+/*message function if miss */
+	message();
+
+}
+
+/*Sunk Function */
+function sunkFunk(coordinates, i, sunkcount) {
+	
+	var xArray = new Array(3);
+	var yArray = new Array(3);
+	var letArray = ["s", "u", "nk"];
+	
+	
+	var check = 0;
+	
+		for (var b = 0; b < 3; b++)  { 
+			if (coordinates[i][b].gotIt == true) {
+			    xArray[check] = coordinates[i][b].xValue;
+				yArray[check] = coordinates[i][b].yValue;
+				check++;
+				
+		}
+		}
+		
+		
+		//var array = new Array(3);
+		
+		if (check == 3) {
+			/*boo is sunkcount + 1*/
+			var boo = sunkcount + 1;
+			
+            document.getElementById("message").innerHTML = "You sank ship " + boo+"!";
+		    for (var m = 0; m<3; m++) {
+			   
+				var x= xArray[m];
+				var y = yArray[m];
+				x = x.toString();
+				y = y.toString();
+				
+				var arrange = ("" + x + y);
+				
+				
+			    document.getElementById(arrange).innerHTML = "<img id = 'battleship' src = 'http://www.battleshipnewjersey.org/wp-content/uploads/2016/05/BSNJ-in-Blue-Water-1980s-web-carousel.jpg'/>";
+				
+				document.getElementById(arrange).style.borderLeft = "none";
+				document.getElementById(arrange).style.borderRight = "none";
+				document.getElementById(arrange).style.borderTop = "none";
+				document.getElementById(arrange).style.borderBottom = "none";
+				
+				}
+				
+				if (boo==3) {
+					
+					document.getElementById("won").style.visibility = "visible";
+					document.getElementById("wonbutton").style.visibility = "visible";
+					
+				}
+			
+			return true;
+			
+		}
+		
+
+}
+
+
+function message() {
+
+	var array = ["Nice try but no cigar..you shouldn't smoke anyway",
+				"Your luck increases the more you try.",
+				"At least this is more fun than a slot machine...maybe",
+				"You got a 9 out of 49 shot...not bad odds",
+				"Is this fun at all?",
+				"This just seems like a waste of time right?",
+				"What would you rather be doing than playing this stupid game?",
+				"Sorry you will never get the time back in your life that you're spending on this silly game",
+				"Maybe if you had cooked breakfast for your mom more you would have better luck",
+				"Everything is a gamble",
+				"There's a direct correlation between how much time you waste on this game and how lucky you will get",
+				"Maybe you should just play chess instead",
+				"I get Miss-ty when I'm holding your hand"
+				
+				]
+				
+				var rand  = Math.floor(Math.random() * (13) + 0);
+				
+	document.getElementById("message").innerHTML = array[rand];
+
+
+
+
+}
+
+
+function gotItFunk() {
+		
+
+       var array = ["Great job Friend!",
+				 "yippee!",	
+				 "Keep Going! Don't stop believin"]
+	
+				var rand  = Math.floor(Math.random() * (3) + 0); 
+				
+				document.getElementById("message").innerHTML = array[rand];
+
+
+
+}
+
+
+
+
+function reloadFunk() {
+
+	location.reload();
+
+}
+
+</script>
+
+
+</body>
+
+
+
+</html>
